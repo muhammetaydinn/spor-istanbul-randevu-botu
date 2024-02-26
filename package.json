@@ -1,0 +1,27 @@
+{
+  "name": "randevu_botu",
+  "version": "1.0.0",
+  "description": "Bu bot, online.spor.istanbul web sitesinde randevu almak için otomatik olarak işlemleri gerçekleştiren bir Puppeteer tabanlı bir bot scriptidir.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muhammetaydinn/randevu_botu.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/muhammetaydinn/randevu_botu/issues"
+  },
+  "homepage": "https://github.com/muhammetaydinn/randevu_botu#readme",
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "dotenv": "^16.4.5",
+    "node-schedule": "^2.1.1",
+    "puppeteer": "^22.2.0",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-recaptcha": "^3.6.8"
+  }
+}
