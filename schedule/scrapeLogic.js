@@ -1,4 +1,6 @@
 const puppeteer = require("puppeteer");
+var locateChrome = require("locate-chrome");
+
 (async () => {
   const executablePath =
     (await new Promise((resolve) => locateChrome((arg) => resolve(arg)))) || "";
