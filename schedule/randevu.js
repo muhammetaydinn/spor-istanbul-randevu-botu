@@ -14,11 +14,29 @@ console.log(
   "password: ",
   password
 );
-const sporNo = "0";
-const startDate = new Date("2024-02-19");
+const sporNo = "1";
 const puppeteer = require("puppeteer-extra");
 const RecaptchaPlugin = require("puppeteer-extra-plugin-recaptcha");
 console.log("Program başladı!");
+const express = require("express");
+const { scrapeLogic } = require("./scrapeLogic");
+const app = express();
+
+const PORT = process.env.PORT || 4000;
+
+app.get("/scrape", (req, res) => {
+  scrapeLogic(res);
+});
+
+app.get("/", (req, res) => {
+  res.send("Render Puppeteer server is up and running!");
+});
+
+app.listen(PORT, () => {
+  console.log(`Listening on port ${PORT}`);
+});
+console.log("Program başladı!");
+console.log(new Date().toLocaleTimeString());
 (async () => {
   puppeteer.use(
     RecaptchaPlugin({
@@ -50,7 +68,7 @@ console.log("Program başladı!");
   /*<input type="submit" name="btnGirisYap" value="Giriş Yap" onclick="javascript:WebForm_DoPostBackWithOptions(new WebForm_PostBackOptions(&quot;btnGirisYap&quot;, &quot;&quot;, true, &quot;login&quot;, &quot;&quot;, false, false))" id="btnGirisYap" class="btn btn-block">*/
   await page.click("input#btnGirisYap");
   console.log(">>>>>>>>Giriş yapıldı<<<<<<<<<<<<<");
-  const index = calculateIndex();
+  const index = 1;
   var seansIndex = 0;
   //index eğer 0 2 4 7 9 11 ise seans index 1 değilse 0 olacak
   if (
@@ -128,22 +146,14 @@ console.log("Program başladı!");
   await browser.close();
 })();
 // Başlangıç ve bitiş tarihlerini belirleyin
+function gunIndeksiniGetir() {
+  var today = new Date().getDay();
+  // Haftanın günlerine göre indeksleri döndürür
+  // Pazar 0, Pazartesi 1, ... Cumartesi 6
+  //cumartesi ve cuma günleri 14 slot digerleri 7 li.
+  // yani cts cuma günü indeksine +7 ekleyerek seans indexini bulabiliriz
 
-// İki haftalık periyotları hesaplayacak fonksiyon
-// bu fonksiyon randevu ekranının tarihleri 2 haftalık göstermesi sebebiyle yazılmıştır
-// her güne bir index numarası verir 0-13 arası 2024-02-19 0 dır mesela
-function calculateIndex() {
-  const today = new Date();
-  const todayFotmatted = today.toISOString().slice(0, 10);
-  console.log(todayFotmatted); // Çık
-  const endDate = new Date(todayFotmatted);
-  // Başlangıç tarihinden bu tarihe kadar geçen gün sayısını hesapla
-  const diffTime = Math.abs(endDate - startDate);
-  const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-
-  // Kalan gün sayısı
-  const remainderDays = diffDays % 14;
-  console.log(`remainderDays: of ${todayFotmatted} : ${remainderDays} `);
-
-  return remainderDays;
+  if (today == 0 || today == 5) {
+    return today + 7;
+  } else return today;
 }

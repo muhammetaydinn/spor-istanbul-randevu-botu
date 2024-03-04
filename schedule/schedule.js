@@ -1,8 +1,6 @@
 const schedule = require("node-schedule");
 const { exec } = require("child_process");
 
-console.log("Program başladı!");
-console.log(new Date().toLocaleTimeString());
 //timezone ile ugrasmaya usendim -3 saat fark var
 const zamanlar = [
   "0 05 17 * * 0",
@@ -13,7 +11,6 @@ const zamanlar = [
   "0 05 17 * * 5",
   "0 35 3 * * 6",
 ];
-
 
 zamanlar.forEach((zaman) => {
   const [saniye, dakika, saat, a, b, gun] = zaman.split(" ");

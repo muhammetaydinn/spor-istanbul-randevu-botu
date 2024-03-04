@@ -88,8 +88,14 @@ Sadece kisisel kullanım için geliştirilmiştir.
 - Bu kodla sabah mı akşam mı seçileceğini belirleriz.
 - buradan sonrası herkeste aynı olacaktır.
 
-  
-
+### Ek bilgi
+![alt text](image.png)
+- buradaki resme göre benim fitness programımdaki slotlar gözükmektedir.
+- 2 slotlu günde akşamı seçiyorum 1 slotlu da da onu.
+- bu duruma göre 2 hafta keşişimi olan randevularım mavi ve yeşil ile gösterilmektedir.bu günlerde indeksler 14lü olmalı diğerlerinde 7 li
+- mavi cumartesi günü alınınan salı randevusunu göstermekte
+- yeşil ise cuma günü alınan pazartesi randevusunu göstermekte
+- bu duruma göre indekslerinizi ayarlayın.  
 
 ## Geliştirme Süreci
 
@@ -108,6 +114,7 @@ Sadece kisisel kullanım için geliştirilmiştir.
   - Eğer alınamadıysa tekrar denenebilir
 - tarih ayarında bir hata olabilir. bununla ilgili bir kontrol mekanizması eklenmelidir.
   - randevu alınan tarih aralıgı 2 hafta 2 hafta seklinde mi gozukuyor yoksa kaydırmalı mı 
+
 ## Lisans
 
 Bu proje MIT Lisansı altında lisanslanmıştır. Daha fazla bilgi için `LICENSE` dosyasını inceleyin.
