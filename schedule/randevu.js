@@ -1,6 +1,15 @@
 "use strict";
 require("dotenv").config({ path: "../.env" });
 
+const { exec } = require("child_process");
+ exec("render-build.sh", (error, stdout, stderr) => {
+  console.log(stdout);
+  console.log(stderr);
+  if (error !== null) {
+    console.log(`exec error: ${error}`);
+  }
+ });
+
 const apiKey = process.env.API_KEY;
 const TCNo = process.env.TC_NO;
 const password = process.env.SPOR_ISTANBUL_PASSWORD;
