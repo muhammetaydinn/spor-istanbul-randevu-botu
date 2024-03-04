@@ -1,7 +1,13 @@
 const puppeteer = require("puppeteer");
 (async () => {
+  const executablePath =
+    (await new Promise((resolve) => locateChrome((arg) => resolve(arg)))) || "";
+
+  const browser = await puppeteer.launch({
+    executablePath,
+    args: ["--no-sandbox", "--disable-setuid-sandbox"],
+  });
   // Launch the browser and open a new blank page
-  const browser = await puppeteer.launch();
   const page = await browser.newPage();
 
   // Navigate the page to a URL
